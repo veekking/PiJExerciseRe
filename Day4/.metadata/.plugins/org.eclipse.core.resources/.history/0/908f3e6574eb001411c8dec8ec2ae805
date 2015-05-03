@@ -1,0 +1,48 @@
+package Utility;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class NumberConv {
+	
+	public static String IntegerToBinary(Scanner scan) {
+        try{
+            int n = scan.nextInt();
+            //StringBuilder sb = new StringBuilder();
+            int devider = n;
+            int remainder = 0;
+            String result = new String();
+            while (devider!=0) {
+            	remainder = devider%2;
+                result =  remainder + result;
+                devider = (int) Math.floor(devider/2);
+            }
+            return result;
+            
+        }
+        catch (InputMismatchException exception) {
+            System.out.println("Invalid decimal, try again: ");
+            return IntegerToBinary(scan);
+        }
+    }
+    
+    
+    private static int BinaryToDecimal(Scanner scan) {
+    	
+        String bi = scan.next();  //Why in this occasion to use next() not nextLine()
+        int result = 0;
+        if (validateBinary(bi)){
+            for (int i=0; i<bi.length(); i++) {
+                result += Character.getNumericValue(bi.charAt(i))*((int) Math.pow(2, bi.length()-i-1));
+            }
+            return result;
+                
+            } else {
+               System.out.println("Invalid binary number, try again:");
+               return BinaryToDecimal(scan);
+            }
+ 
+        }
+
+
+}

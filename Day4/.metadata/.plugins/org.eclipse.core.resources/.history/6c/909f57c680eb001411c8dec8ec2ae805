@@ -1,0 +1,58 @@
+import java.util.Scanner;
+import java.lang.String;
+import java.lang.Math;
+import java.lang.Character;
+
+public class BinaryHex {
+	public static void main(String[] args) {
+		Scanner myScan = new Scanner(System.in);
+		System.out.println("Please type a decimal or hex");
+		String st = myScan.nextLine();
+		
+		if (st.substring(0,2).equals("0x")) {
+			if (isHex(st)) {System.out.println("The decimals is: " + HexToDecimal(st));
+			} else {
+				System.out.println("Invalid Hex input");
+			}
+		} else {
+			if (isDecimal(st)) {
+				System.out.println("The Hex is: " + DecimalToHex(st));
+			} else {
+				System.out.println ("Invalid Input");
+			}
+		}		
+	}
+	
+	private static boolean isHex(String s) {
+		if (s.substring(2,s.length()).matches("[\\dA-Fa-f]+")) return true; //d 
+		return false;
+	}
+	
+	private static int HexToDecimal(String st){
+		int result = 0;
+		st = st.substring(2,st.length());
+		for (int i=0; i<st.length(); i++) {
+			result += HexDigit(st.charAt(i))*Math.pow(16, st.length()-1-i);
+		}
+		return result;
+	}
+	
+	private static int HexDigit(char c) {
+		if (Character.isDigit(c)) return Character.getNumericValue(c);
+		switch (c) {
+		case 'a': return 10;
+		case 'b': return 11;
+		case 'c': return 12;
+		case 'd': return 13;
+		case 'e': return 14;
+		case 'f': return 14;
+		default: return 0;
+		}	
+	}
+	
+	private static boolean isDecimal (String st) {
+		if (st.matches("[\\d]+")) return true;
+		return false;
+	}
+
+}

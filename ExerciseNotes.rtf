@@ -1,0 +1,49 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1343\cocoasubrtf160
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red127\green0\blue85;\red106\green62\blue62;\red0\green0\blue192;
+\red42\green0\blue255;\red201\green113\blue0;\red255\green255\blue51;\red243\green235\blue0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww13520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs22 \cf0 	\
+Day6 -> EmployeeFile \
+when loop read the integer, make sure use s.next(). otherwise fall into infinite loop\
+	\cf2 private\cf0  \cf2 int\cf0  readID(Scanner \cf3 s\cf0 ) \{\
+		System.\cf4 out\cf0 .println(\cf5 "Please enter Employee ID: "\cf0 );\
+		\cf2 while\cf0 (!\cf3 s\cf0 .hasNextInt()) \{\
+			System.\cf4 out\cf0 .println(\cf5 "Invalid input, try again."\cf0 );\
+			\cb6 s.next();\
+\cb1 		\}\
+		\cf2 return\cf0  \cf3 s\cf0 .nextInt();\
+	\}\
+\
+Day6 -> be careful with the scanner;\
+		shouldn\'92t read the value twice and be mindful of the placeholder;\
+		nextLine() , placeholder returns the beginning of next line\
+		next(); nextInt(), placeholder returns next space of the same line;\
+		to reach a word after reading an int, should jump the placeholder by one line\
+	\cf2 private\cf0  String readName(Scanner \cf3 s\cf0 ) \{\
+		String \cf3 temp\cf0  = \cf2 new\cf0  String();\
+		System.\cf4 out\cf0 .println(\cf5 "Please enter Employee Name: "\cf0 );\
+		\cf2 \cb7 if\cf0  (\cf4 count\cf0 !=0) \cf3 temp\cf0  = \cf3 s\cf0 .nextLine();\
+		\cf3 temp\cf0  =  \cf3 s\cf0 .nextLine();\cb1 \
+		\cf2 return\cf0  \cf3 temp\cf0 ;\
+	\}\
+\
+Day 7 -> LinkedList\
+\
+\pard\pardeftab720
+\cf2 	public\cf0  \cf2 class\cf0  NodeImpl \cf2 implements\cf0  Node\{\
+	\cf2 private\cf0  Object \cf4 data\cf0 ;\
+	\cf2 private\cf0  Node \cf4 pre\cf0 ;\
+	\cf2 private\cf0  Node \cf4 next\cf0 ;\
+	\
+	NodeImpl(Object \cf3 dataVal\cf0 ) \{\
+		\cf4 data\cf0  = \cf3 dataVal\cf0 ;\
+		\cf4 pre\cf0  = \cf2 null\cf0 ;\
+		\cf4 next\cf0  = \cf2 null\cf0 ;\
+	\}\
+	\
+	\cb8 Node \cf3 newSpy\cf0  = \cf2 new\cf0  SpyImpl(\cf3 dataValue\cf0 );\cb1 \
+	why when the newSpy created, the data type is Node, not SpyImpl???? }

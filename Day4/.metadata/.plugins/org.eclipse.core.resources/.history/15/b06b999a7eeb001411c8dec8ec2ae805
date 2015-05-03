@@ -1,0 +1,29 @@
+import java.util.Scanner;
+import java.lang.String;
+
+public class BinaryHex {
+	public static void main(String[] args) {
+		Scanner myScan = new Scanner(System.in);
+		System.out.println("Please type a decimal or hex");
+		String st = myScan.nextLine();
+		
+		if (st.substring(0,2).equals("0x")) {
+			if (isHex(st)) {System.out.println("The decimals is: " + HexToDecimal(st));
+			} else {
+				System.out.println("Invalid Hex input");
+			}
+		} else {
+			if (isDecimal(st)) {
+				System.out.println("The Hex is: " + DecimalToHex(st));
+			} else {
+				System.out.println ("Invalid Input");
+			}
+		}		
+	}
+	
+	private static boolean isHex(String s) {
+		if (s.substring(2,s.length()).matches("[\\dA-Fa-f]+")) return true; //d 
+		return false;
+	}
+
+}

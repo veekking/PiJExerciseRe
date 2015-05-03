@@ -1,0 +1,41 @@
+package Utility;
+
+import java.lang.Math;
+
+public class NumberConv {
+	
+	public static String IntegerToHex(int n, int hex) {
+
+            int devider = n;
+            int remainder = 0;
+            String result = new String();
+            while (devider!=0) {
+            	remainder = dev(devider, hex);   // function to return remainder from 0-f
+                result =  remainder + result;
+                devider = (int) Math.floor(devider/hex);
+            }
+            return result;
+            
+        }
+    
+    
+    
+    private static int BinaryToDecimal(Scanner scan) {
+    	
+        String bi = scan.next();  //Why in this occasion to use next() not nextLine()
+        int result = 0;
+        if (validateBinary(bi)){
+            for (int i=0; i<bi.length(); i++) {
+                result += Character.getNumericValue(bi.charAt(i))*((int) Math.pow(2, bi.length()-i-1));
+            }
+            return result;
+                
+            } else {
+               System.out.println("Invalid binary number, try again:");
+               return BinaryToDecimal(scan);
+            }
+ 
+        }
+
+
+}
